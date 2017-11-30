@@ -58,7 +58,7 @@
 			<div class="spacer">   		
 
        		<h4>Login</h4>
-			<form action = "" method = "post">
+			<form action = "" method = "post"  class="wowload fadeIn">
 			<div class="form-group">	
 			<input type="text" class="form-control" name="username" id="username" placeholder="Name">
 			</div>
@@ -86,5 +86,5 @@
 <!-- form -->
 
 </div>
-
+</div>
 <?php include 'footer.php';?>

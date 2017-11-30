@@ -9,8 +9,8 @@
 
 	$reviewID = rand(1,1000);
 	//Check if there is already a reviewID in the database
-		$sqlNumCheck = "SELECT * FROM Review WHERE ReviewID = '$reviewID'";
-		$count = mysqli_num_rows(mysqli_query($db, $sqlNumCheck));
+	$sqlNumCheck = "SELECT * FROM Review WHERE ReviewID = '$reviewID'";
+	$count = mysqli_num_rows(mysqli_query($db, $sqlNumCheck));
 
 	while($count != 0)
 	{
@@ -65,19 +65,19 @@
 			{
     			//echo "This is a breakfast review <br>";
 				$breakfastType = mysqli_real_escape_string($db,$_POST['breakfasttype']);
-				$sqlTypeToAdd = "INSERT INTO breakfastreview VALUES ('$reviewID', '$breakfastType')";
+				$sqlTypeToAdd = "INSERT INTO breakfastreview VALUES ('$reviewID', '$breakfastType', '$hotelID')";
     		}
 			else if($reviewtype == "service")
 			{
     			//echo "This is a service review <br>";
 				$serviceType = mysqli_real_escape_string($db,$_POST['servicetype']);
-				$sqlTypeToAdd = "INSERT INTO servicereview VALUES ('$reviewID', '$serviceType')";
+				$sqlTypeToAdd = "INSERT INTO servicereview VALUES ('$reviewID', '$serviceType', '$hotelID')";
 			}
 			else if($reviewtype == "room")
 			{
 				//echo "This is a room review <br>";
-				$roomNo = mysqli_real_escape_string($db,$_POST['roomno']);
-				$sqlTypeToAdd = "INSERT INTO roomreview VALUES ('$reviewID', '$roomNo')";
+				$roomNo = (int)mysqli_real_escape_string($db,$_POST['roomno']);
+				$sqlTypeToAdd = "INSERT INTO roomreview VALUES ('$reviewID', '$roomNo', '$hotelID')";
 			}
 			else
 			{
@@ -118,8 +118,8 @@
 			<div class="spacer">   		
 
        		
-			<form action = "" method = "post">
-			<div class="form-group">	
+			<form action = "" method = "post"  class="wowload fadeIn">
+			<div class="form-group" >	
 				<select  class="div-toggle" data-target=".my-info-1" id="reviewtype" name="reviewtype"> 
 					<option value="breakfast" data-show=".breakfast" selected="selected">Breakfast</option>
 					<option value="room" data-show=".room">Room</option>
@@ -151,7 +151,7 @@
 						
 							$("#hotelno").change(function() 
 							{
-  								$("#breakfasttype").load("formtest.php?type=breakfast&choice=" + $("#hotelno").val());
+  								$("#breakfasttype").load("reviewform.php?type=breakfast&choice=" + $("#hotelno").val());
 							});
 							
 						</script>
@@ -168,7 +168,7 @@
 						
 							$("#hotelno").change(function() 
 							{
-  								$("#servicetype").load("formtest.php?type=service&choice=" + $("#hotelno").val());
+  								$("#servicetype").load("reviewform.php?type=service&choice=" + $("#hotelno").val());
 							});
 							
 						</script>
@@ -219,6 +219,6 @@
 	</div>
 </div>
 <!-- form -->
-
+	</div>
 </div>
 <?php include 'footer.php';?>

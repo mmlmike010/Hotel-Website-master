@@ -68,7 +68,7 @@
 			<div class="spacer">   		
 
        		<h4>Sign Up</h4>
-			<form action = "" method = "post">
+			<form action = "" method = "post"  class="wowload fadeIn">
 			<div class="form-group">	
 			<input type="text" class="form-control" name="firstname" id="firstname" placeholder="First Name">
 			</div>
