@@ -11,13 +11,13 @@
 
 	$uid = rand(1,1000);
 	//Check if there is already a UID in the database
-	$sqlNumCheck = "SELECT * FROM Users WHERE uid = '$uid'";
+	$sqlNumCheck = "SELECT * FROM users WHERE uid = '$uid'";
 	$count = mysqli_num_rows(mysqli_query($db, $sqlNumCheck));
 
 	while($count != 0)
 	{
 		$uid = rand(1,1000);
-		$sqlNumCheck = "SELECT * FROM Users WHERE uid = '$uid'";
+		$sqlNumCheck = "SELECT * FROM users WHERE uid = '$uid'";
 		$count = mysqli_num_rows(mysqli_query($db, $sqlNumCheck));
 	}
 	
@@ -29,15 +29,15 @@
 		$fullname = $firstname;
 		$fullname .= " ";
 		$fullname .= $lastname;
-		echo $fullname;
+		//echo $fullname;
 		$username = mysqli_real_escape_string($db,$_POST['username']);
 		$password = mysqli_real_escape_string($db,$_POST['password']);
 		$email = mysqli_real_escape_string($db, $_POST['email']);
 		$address = mysqli_real_escape_string($db, $_POST['address']);
 		$phone = mysqli_real_escape_string($db, $_POST['phonenum']);
 
-		$usersql = "INSERT INTO Users VALUES('$uid', '$username','$password','$firstname','$lastname', false)";
-		$custsql = "INSERT INTO Customer VALUES('$uid', '$email','$address','$phone','$fullname')";
+		$usersql = "INSERT INTO users VALUES('$uid', '$username','$password','$firstname','$lastname', false)";
+		$custsql = "INSERT INTO customer VALUES('$uid', '$email','$address','$phone','$fullname')";
 		if (mysqli_query($db, $usersql) && mysqli_query($db, $custsql)) 
 		{
 			$error =  "New user created successfully";

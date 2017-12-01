@@ -9,13 +9,13 @@
 
 	$reviewID = rand(1,1000);
 	//Check if there is already a reviewID in the database
-	$sqlNumCheck = "SELECT * FROM Review WHERE ReviewID = '$reviewID'";
+	$sqlNumCheck = "SELECT * FROM review WHERE ReviewID = '$reviewID'";
 	$count = mysqli_num_rows(mysqli_query($db, $sqlNumCheck));
 
 	while($count != 0)
 	{
 		$reviewID = rand(1,1000);
-		$sqlNumCheck = "SELECT * FROM Review WHERE ReviewID = '$reviewID'";
+		$sqlNumCheck = "SELECT * FROM review WHERE ReviewID = '$reviewID'";
 		$count = mysqli_num_rows(mysqli_query($db, $sqlNumCheck));
 	}
 

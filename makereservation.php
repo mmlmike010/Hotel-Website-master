@@ -12,13 +12,13 @@
 
 	$invoiceNo = rand(1,1000);
 	//Check if there is already a reviewID in the database
-	$sqlNumCheck = "SELECT * FROM Reservation WHERE InvoiceNo = '$invoiceNo'";
+	$sqlNumCheck = "SELECT * FROM reservation WHERE InvoiceNo = '$invoiceNo'";
 	$count = mysqli_num_rows(mysqli_query($db, $sqlNumCheck));
 
 	while($count != 0)
 	{
 		$invoiceNo = rand(1,1000);
-		$sqlNumCheck = "SELECT * FROM Reservation WHERE InvoiceNo = '$invoiceNo'";
+		$sqlNumCheck = "SELECT * FROM reservation WHERE InvoiceNo = '$invoiceNo'";
 		$count = mysqli_num_rows(mysqli_query($db, $sqlNumCheck));
 	}
 
