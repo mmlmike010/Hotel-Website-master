@@ -158,7 +158,7 @@
 								<div class="col-xs-6">
 									<?php
 
-										$hotelSql = mysqli_query($db,"SELECT HotelID, Location FROM Hotel");
+										$hotelSql = mysqli_query($db,"SELECT HotelID, Location FROM hotel");
 										if(mysqli_num_rows($hotelSql))
 										{
 											$select= '<select class="form-control" id="hotelno" name="hotelno">';

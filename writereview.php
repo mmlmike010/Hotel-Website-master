@@ -129,7 +129,7 @@
 			<div class="form-group">
 				<?php
 						
-							$hotelSql = mysqli_query($db,"SELECT HotelID, Location FROM Hotel");
+							$hotelSql = mysqli_query($db,"SELECT HotelID, Location FROM hotel");
 							if(mysqli_num_rows($hotelSql))
 							{
 								$select= '<select class="div-toggle" id="hotelno" name="hotelno">';
