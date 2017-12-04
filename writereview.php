@@ -60,7 +60,7 @@
 			//Actually add the entry here
 			$sqlToAdd = "INSERT INTO review VALUES ('$reviewID', '$cid', '$reviewrating', '$reviewtext');";
 			//$query = mysqli_query($db, $sqlToAdd);
-			
+			$sqlTypeToAdd = NULL;
 			if($reviewtype == "breakfast")
 			{
     			//echo "This is a breakfast review <br>";
@@ -84,8 +84,13 @@
 				$error = "Nothing selected for review type";
 			}
 		
-		
-			if (mysqli_query($db, $sqlToAdd) && mysqli_query($db, $sqlTypeToAdd)) 
+			if($sqlTypeToAdd == NULL)
+			{
+				$error = "Nothing selected for review type";
+			}
+			else
+			{
+				if (mysqli_query($db, $sqlToAdd) && mysqli_query($db, $sqlTypeToAdd)) 
 			{
 				$error =  "Review Added. Thank You!";
 			} 
@@ -93,6 +98,8 @@
 			{
 				$error =  mysqli_error($db);
 			}	
+			}
+			
 			
 	}
 ?>
@@ -121,7 +128,8 @@
 			<form action = "" method = "post"  class="wowload fadeIn">
 			<div class="form-group" >	
 				<select  class="div-toggle" data-target=".my-info-1" id="reviewtype" name="reviewtype"> 
-					<option value="breakfast" data-show=".breakfast" selected="selected">Breakfast</option>
+					<option value="">Select the type of review</option>
+					<option value="breakfast" data-show=".breakfast" >Breakfast</option>
 					<option value="room" data-show=".room">Room</option>
 					<option value="service" data-show=".service">Service</option>
 				</select>

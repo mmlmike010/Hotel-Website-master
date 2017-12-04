@@ -55,10 +55,30 @@
 		$diffToday = ($start - strtotime(date('Y-m-d')));
 		$diff = ($end - $start)/86400;
 		
-		//Add the credit card to the database
-		$sqlToAdd = "INSERT INTO creditcard VALUES ('$ccnum','$ccdate','$ccaddress','$ccname','$ccv')";
-		mysqli_query($db, $sqlToAdd);
-		
+		//Calculate the price
+		$startDate = date("Y-m-d", $start);
+		$endDate = date("Y-m-d", $end);
+		$discount = 0;
+		$sqlPrice = mysqli_query($db,"SELECT r.price FROM Room r WHERE r.hotelID = '$hotelID' AND r.Room_no = '$roomno' ");
+		$rs = mysqli_fetch_array($sqlPrice);
+		$price = $rs['price'];
+		$sqlDiscount = mysqli_query($db,"SELECT o.discount FROM offerroom o WHERE CAST('$startDate' as DATE) BETWEEN o.SDate AND o.EDate");
+
+		if(mysqli_num_rows($sqlDiscount) == 0)
+		{
+			$discount = 0;
+		}
+		else
+		{
+			$rs = mysqli_fetch_array($sqlDiscount);
+			$discount = $rs['discount'];
+		}
+			$totalPrice = $price;
+			$totalDiscount = $discount;
+
+
+		$totalCost = $totalPrice - $totalDiscount;
+		$totalCost = $totalCost * $diff;
 		/*
 		echo $start;
 		echo "<br>";
@@ -89,10 +109,12 @@
 		}
 		else
 		{
-			$start = date("Y-m-d", $start);
-			$end = date("Y-m-d", $end);
-			$sqlToAdd = "INSERT INTO reservation VALUES( $invoiceNo ,$cid, $ccnum, CAST('$start' as DATE), CAST('$end' as DATE))";
+			//Add the credit card to the database
+			$sqlToAdd = "INSERT INTO creditcard VALUES ('$ccnum','$ccdate','$ccaddress','$ccname','$ccv')";
 			mysqli_query($db, $sqlToAdd);
+			$sqlToAdd = "INSERT INTO reservation VALUES( $invoiceNo ,$cid, $ccnum, CAST('$startDate' as DATE), CAST('$endDate' as DATE), $totalCost)";
+			mysqli_query($db, $sqlToAdd);
+			$confirmation = "Reservation made. Thank you!";
 		}
 		
 	}

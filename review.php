@@ -16,68 +16,69 @@
 
 
 ?>
+
+<script src="assets/jquery.js"></script>
+<script type="text/javascript">
+
+ $(document).ready(function() {
+	 
+    $("#room").click(function() {                
+		 
+      $.ajax({    //create an ajax request to display.php
+        type: "GET",
+        url: "getreviews.php", 
+		data: {type: "room"},
+        dataType: "html",   //expect html to be returned                
+        success: function(response){                    
+            $("#responsecontainer").html(response); 
+            //alert(response);
+        }
+
+    	});
+	});
+	$("#breakfast").click(function() {                
+		 
+      $.ajax({    //create an ajax request to display.php
+        type: "GET",
+        url: "getreviews.php", 
+		data: {type: "breakfast"},
+        dataType: "html",   //expect html to be returned                
+        success: function(response){                    
+            $("#responsecontainer").html(response); 
+            //alert(response);
+        }
+
+    	});
+	});
+	$("#service").click(function() {                
+		 
+      $.ajax({    //create an ajax request to display.php
+        type: "GET",
+        url: "getreviews.php", 
+		data: {type: "service"},
+        dataType: "html",   //expect html to be returned                
+        success: function(response){                    
+            $("#responsecontainer").html(response); 
+            //alert(response);
+        }
+
+    	});
+	});
+});
+
+</script>
+
 <div class="container">
 
        <h1 class="title">Reviews</h1>
        <div class="row">
-            <form action = "" method = "post">
-             <input type = "submit" name="room" class="btn btn-default" value = "Room Review"/>
-             <input type = "submit" name="breakfast" class="btn btn-default" value = "Breakfast Review"/>
-             <input type = "submit" name="service" class="btn btn-default" value = "Service Review"/>   
-		   </form>  
-		   </br>
-               <table style="width: 100%;" border="3" cellpadding="10">
-					  <tr>
-						<th width = 30%>User</th>
-						<th width = 50%>Comment</th>
-						<th width = 20%>Rating</th>
-					  </tr>
-					  <tr>
-						<td>Bob Marley</td>
-						<td>Great Hotel, can't wait to come back here again. </td>
-						<td>7/10</td>
-					  </tr>
-					  <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					  </tr>
-					  <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					  </tr>
-					  <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					  </tr>
-					  <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					  </tr>
-					  <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					  </tr>
-					  <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					  </tr>
-					  <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					  </tr>
-					  <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					  </tr>
-				</table>
+             <input type = "button" id="room" name="room" class="btn btn-default" value = "Room Review"/>
+             <input type = "button" id="breakfast" name="breakfast" class="btn btn-default" value = "Breakfast Review"/>
+             <input type = "button" id="service" name="service" class="btn btn-default" value = "Service Review"/>   
+			<br>
+		   	<br>
+		  <div id="responsecontainer"></div>
+
 	</br>         
        </div>
 </div>
