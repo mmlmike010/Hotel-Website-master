@@ -71,6 +71,7 @@
         <li><a href="rooms.php">Rooms</a></li>        
         <li><a href="introduction.php">Introduction</a></li>
         <li><a href="review.php">Reviews</a></li>
+		<li><a href="statistics.php">Statistics</a></li>
         <li><a href="dashboard.php">User Account</a></li>
         <li><a href="logout.php">Logout</a></li>
       </ul>
@@ -80,6 +81,7 @@
         <li><a href="rooms.php">Rooms</a></li>        
         <li><a href="introduction.php">Introduction</a></li>
         <li><a href="review.php">Reviews</a></li>
+		<li><a href="statistics.php">Statistics</a></li>
         <li><a href="login.php">Login</a></li>
       </ul>
       <?php } ?>
