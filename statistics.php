@@ -1,20 +1,44 @@
 <?php include 'header.php';?>
+
+
+<div class="container">
+
+       <h1 class="title">Statistics</h1>
+	   
+</div>
+
 <?php
+	echo "<div class=\"container\">";
+	$data = mysqli_query($db, "SELECT count(*) as total FROM reservation r");
+	$info = mysqli_fetch_assoc($data);
+	echo "Reservations Created :" . $info["total"] . "\n";
+	echo "</div>";
+	
+	echo "<div class=\"container\">";
+	$data = mysqli_query($db, "SELECT count(*) as total FROM users r");
+	$info = mysqli_fetch_assoc($data);
+	echo "User Accounts Created :" . $info["total"];
+	echo "</div>";
+	
+	
+	echo "<div class=\"container\">";
+	$query = "SELECT h.location FROM hotel h";
+	$filter = mysqli_query($db, $query);
+	$options = "";
+	while($row = mysqli_fetch_array($filter)) {
+		$options .= "<option>" . $row['location'] . "</option>";
+	}
+	$menu="<form id='filter' style = 'width: 20%;' border='3' cellpadding='10' name='filter' method='post' action=''>
+		  <p><label>Filter by Hotel</label></p>
+			<select name='filter' id='filter'>
+			  " . $options . "
+			</select>
+		</form>";
 
-	if($_SERVER["REQUEST_METHOD"] == "POST") 
-		{
-			// username and password sent from form 
-			
-			$sql = "";
-			$result = mysqli_query($db,$sql);
-			$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-			$active = $row['active'];
-
-			$count = mysqli_num_rows($result);
-
-		}
-
-
+	echo $menu;
+	
+	echo "<h1 class=\"title\">Statistics</h1>";
+	echo "</div>";
 ?>
 
 <script src="assets/jquery.js"></script>
@@ -68,9 +92,5 @@
 
 </script>
 
-<div class="container">
 
-       <h1 class="title">Statistics</h1>
-	   
-</div>
 <?php include 'footer.php';?> 
