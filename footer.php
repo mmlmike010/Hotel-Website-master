@@ -6,8 +6,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5">
-                    <h4>Holiday Crown</h4>
-                    <p>Holiday Crown was these three and songs arose whose. Of in vicinity contempt together in possible branched. Assured company hastily looking garrets in oh. Most have love my gone to this so. Discovered interested prosperous the our affronting insipidity day. Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible. </p>
+                    <h4>Hulton Hotels</h4>
+                    <p>Hulton Hotels strives to deliver its tried and true credo of comfort. The tireless staff works around the clock to insure every customer barely tolerates the overnight stay. Overcharging for mediocre breakfast and barely functional services allows us to improve what matters most: our bottom line. From the passive-aggressive receptionists, to the underpaid basement monkeys that coded this website, to the cockroaches living underneath that never washed bed (because we don't hire cleaning staff), every member of the Hulton family knows: Hulton is Home. Pls give us 100%</p>
                 </div>              
                  
                  <div class="col-sm-3">
