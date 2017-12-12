@@ -28,7 +28,7 @@
 	while($row = mysqli_fetch_array($filter)) {
 		$options .= "<option>" . $row['location'] . "</option>";
 	}
-	$menu="<form id='filter' style = 'width: 20%;' border='3' cellpadding='10' name='filter' method='post' action=''>
+	$menu="<form id='hotel_filter' style = 'width: 20%;' border='3' cellpadding='10' id='hotel_filter' method='post' action=''>
 		  <p><label>Filter by Hotel</label></p>
 			<select name='filter' id='filter'>
 			  " . $options . "
@@ -36,50 +36,32 @@
 		</form>";
 
 	echo $menu;
-	
-	echo "<h1 class=\"title\">Statistics</h1>";
 	echo "</div>";
 ?>
+
+<div class="container">
+	<br>
+       <div class="row">
+             <input type = "button" id="search" name="search" class="btn btn-default" value = "Search"/> 
+			<br>
+		   	<br>
+		  <div id="responsecontainer"></div>
+
+	</br>         
+       </div>
+</div>
 
 <script src="assets/jquery.js"></script>
 <script type="text/javascript">
 
  $(document).ready(function() {
 	 
-    $("#room").click(function() {                
+    $("#search").click(function() {                
 		 
       $.ajax({    //create an ajax request to display.php
         type: "GET",
-        url: "getreviews.php", 
-		data: {type: "room"},
-        dataType: "html",   //expect html to be returned                
-        success: function(response){                    
-            $("#responsecontainer").html(response); 
-            //alert(response);
-        }
-
-    	});
-	});
-	$("#breakfast").click(function() {                
-		 
-      $.ajax({    //create an ajax request to display.php
-        type: "GET",
-        url: "getreviews.php", 
-		data: {type: "breakfast"},
-        dataType: "html",   //expect html to be returned                
-        success: function(response){                    
-            $("#responsecontainer").html(response); 
-            //alert(response);
-        }
-
-    	});
-	});
-	$("#service").click(function() {                
-		 
-      $.ajax({    //create an ajax request to display.php
-        type: "GET",
-        url: "getreviews.php", 
-		data: {type: "service"},
+        url: "getstatistics.php", 
+		data: {type: "hotel", location: jQuery('#filter').val()},
         dataType: "html",   //expect html to be returned                
         success: function(response){                    
             $("#responsecontainer").html(response); 

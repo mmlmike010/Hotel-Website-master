@@ -101,18 +101,20 @@
 		if($hotelID == 0 || $roomno == 0)
 		{
 			$error .= "<br>Please enter a valid choice for hotel and room";
+			$confirmation = "";
 		}
 		if($diff < 0 || $diffToday < 0)
 		{
 			$error .= "<br>Please enter a valid date range.";
 			//$error .="<br> Please enter a valid choice for Hotel";
+			$confirmation = "";
 		}
 		else
 		{
 			//Add the credit card to the database
 			$sqlToAdd = "INSERT INTO creditcard VALUES ('$ccnum','$ccdate','$ccaddress','$ccname','$ccv')";
 			mysqli_query($db, $sqlToAdd);
-			$sqlToAdd = "INSERT INTO reservation VALUES( $invoiceNo ,$cid, $ccnum, CAST('$startDate' as DATE), CAST('$endDate' as DATE), $totalCost)";
+			$sqlToAdd = "INSERT INTO reservation VALUES( $invoiceNo ,$cid, $ccnum, CAST('$startDate' as DATE), CAST('$endDate' as DATE), $hotelID)";
 			mysqli_query($db, $sqlToAdd);
 			$confirmation = "Reservation made. Thank you!";
 		}
